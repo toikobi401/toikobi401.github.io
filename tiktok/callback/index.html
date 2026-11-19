@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>TikTok sign-in</title>
+<link rel="icon" href="/logo.png">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<main>
+  <h1>TikTok sign-in</h1>
+  <p id="msg">Returning to Rift Arena Publisher…</p>
+</main>
+<script>
+  // TikTok requires an HTTPS redirect URI, so this page relays the OAuth result to the local tool.
+  var LOCAL = 'http://127.0.0.1:5173/api/tiktok/oauth/callback';
+  var q = new URLSearchParams(location.search);
+  if (q.has('code') || q.has('error')) {
+    location.replace(LOCAL + location.search);
+  } else {
+    document.getElementById('msg').textContent = 'Nothing to do here. This page only handles the TikTok sign-in redirect for Rift Arena Publisher.';
+  }
+</script>
+</body>
+</html>
